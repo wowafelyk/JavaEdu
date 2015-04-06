@@ -35,6 +35,7 @@ public class BallComponent extends JPanel {
         balls.add(b);
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g); // erase background
         Graphics2D g2 = (Graphics2D) g;
@@ -43,6 +44,7 @@ public class BallComponent extends JPanel {
         }
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }

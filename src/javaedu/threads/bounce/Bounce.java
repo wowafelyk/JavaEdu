@@ -102,6 +102,7 @@ class BounceFrame extends JFrame {
             for (int i = 1; i <= STEPS; i++) {
                 ball.move(comp.getBounds());
                 comp.paint(comp.getGraphics());
+                //comp.paintComponent(comp.getGraphics());
                 Thread.sleep(DELAY);
             }
         } catch (InterruptedException e) {
