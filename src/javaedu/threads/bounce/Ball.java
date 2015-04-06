@@ -18,7 +18,7 @@ import java.awt.geom.*;
  * @version 1.33 2007-05-17
  * @author Cay Horstmann
  */
-public class Ball {
+public class Ball  {
 
     private static final int XSIZE = 15;
     private static final int YSIZE = 15;

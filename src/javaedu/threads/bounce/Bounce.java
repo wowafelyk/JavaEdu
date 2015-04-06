@@ -11,6 +11,7 @@ package javaedu.threads.bounce;
  */
 import java.awt.*;
 import java.awt.event.*;
+import static javaedu.threads.bounce.BallRunnable.DELAY;
 import javax.swing.*;
 
 /**
@@ -25,6 +26,7 @@ public class Bounce {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new BounceFrame();
+                System.err.println("grrsrgg");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
@@ -35,11 +37,44 @@ public class Bounce {
 /**
  * The frame with ball component and buttons.
  */
+class BallRunnable implements Runnable {
+
+    private Ball ball;
+    private Component component;
+    public static final int STEPS = 5000;
+    public static final int DELAY = 5;
+
+    /**
+     * Constructs the runnable.
+     *
+     * @param aBall the ball to bounce
+     * @param aComponent the component in which the ball bounces
+     */
+    public BallRunnable(Ball aBall, Component aComponent) {
+        ball = aBall;
+        component = aComponent;
+    }
+
+    public void run() {
+        try {
+            for (int i = 1; i <= STEPS; i++) {
+                ball.move(component.getBounds());
+                component.repaint();
+                Thread.sleep(DELAY);
+            }
+        } catch (InterruptedException e) {
+            System.err.println("Error jopta");
+        }
+    }
+
+}
+
 class BounceFrame extends JFrame {
 
     private BallComponent comp;
-    public static final int STEPS = 1000;
-    public static final int DELAY = 3;
+    //public static final int STEPS = 1000;
+    //public static final int DELAY = 3;
+    public static final int WAIT = 10;
 
     /**
      *
@@ -58,7 +93,24 @@ class BounceFrame extends JFrame {
         addButton(buttonPanel, "Start", new ActionListener() {
 
             public void actionPerformed(ActionEvent event) {
-                addBall();
+                
+                new Thread(new Runnable(){
+                   
+                    public void run(){
+                      try {
+                    for (int i = 0; i < 1; i++) {
+                        Thread.sleep(WAIT);
+                        addBall();
+                    }
+                } catch (InterruptedException e) {
+                    System.err.println("shajtan error");
+                }  
+                    }
+                    
+                }).start();
+
+                
+
             }
         });
         addButton(buttonPanel, "Close", new ActionListener() {
@@ -93,20 +145,17 @@ class BounceFrame extends JFrame {
      */
     public void addBall() {
 
-        try {
-
-            Ball ball = new Ball();
-
-            comp.add(ball);
-
-            for (int i = 1; i <= STEPS; i++) {
-                ball.move(comp.getBounds());
-                comp.paint(comp.getGraphics());
-                //comp.paintComponent(comp.getGraphics());
-                Thread.sleep(DELAY);
-            }
-        } catch (InterruptedException e) {
-        }
+        Ball b = new Ball();
+        comp.add(b);
+        /*for (int i = 1; i <= STEPS; i++) {
+         ball.move(comp.getBounds());
+         comp.paint(comp.getGraphics());
+         //comp.paintComponent(comp.getGraphics());
+         Thread.sleep(DELAY);
+         } */
+        Runnable r = new BallRunnable(b, comp);
+        Thread t = new Thread(r);
+        t.start();
 
     }
 
