@@ -6,6 +6,8 @@
 
 package javaedu;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javaedu.threads.bounce.Bounce;
 
 /**
@@ -19,6 +21,14 @@ public class JavaEdu {
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
+        Logger.getLogger(Test_threads.class.getName()).log(Level.INFO,"Haha it's working");
+        /**
+         * Starting new class in separate thread
+         */
+        Thread t = new Thread(new Test_threads(),"MyTread");
+        t.start();
+        System .out.println("Is interrupted = "+t.isInterrupted());
+        t.interrupt();
         String [] arr={"Start","project"};
         Bounce.main(arr);
     }
