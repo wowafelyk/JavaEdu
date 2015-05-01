@@ -22,7 +22,7 @@ import javax.swing.*;
  */
 public class Bounce {
 
-    public static void main(String[] args) {
+    public static void main() {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new BounceFrame();
