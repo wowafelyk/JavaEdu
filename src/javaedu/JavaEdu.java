@@ -21,8 +21,8 @@ public class JavaEdu {
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
-        
-        String s = "synch";
+
+        String s = "blockingQueue";
         switch (s) {
             case "bounce":
                 Logger.getLogger(BankTest.class.getName()).log(Level.INFO, "Haha it's working");
@@ -38,6 +38,11 @@ public class JavaEdu {
                 break;
             case "synch":
                 TextField.main();
+                System.out.println("Case SYNCH");
+                break;
+            case "blockingQueue":
+                javaedu.threads.blockingQueue.BlockingQueueTest.main();
+                break;
         }
     }
 

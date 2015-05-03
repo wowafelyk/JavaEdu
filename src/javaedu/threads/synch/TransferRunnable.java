@@ -52,7 +52,7 @@ public class TransferRunnable implements Runnable {
 
                 int toAccount = (int) (bank.size() * Math.random());
 
-                double amount = maxAmount * Math.random();
+                double amount = Math.rint(maxAmount * Math.random());
 
                 bank.transfer(fromAccount, toAccount, amount, text);
 
