@@ -1,0 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaedu.threads.blockingQueue;
+
+/**
+ *
+ * @author Fenix
+ */
+import java.util.*;
+import java.util.concurrent.*;
+
+public class BlockingQueueTest2 {
+
+    public static void main() {
+        BlockingQueue<String> drop = new ArrayBlockingQueue(1, true);
+        (new Thread(new Producer(drop))).start();
+        (new Thread(new Consumer(drop))).start();
+    }
+
+}
+
+class Producer
+        implements Runnable {
+
+    private BlockingQueue<String> drop;
+    List<String> messages = Arrays.asList(
+            "Mares eat oats",
+            "Does eat oats",
+            "Little lambs eat ivy",
+            "Wouldn't you eat ivy too?");
+
+    public Producer(BlockingQueue<String> d) {
+        this.drop = d;
+    }
+
+    public void run() {
+        try {
+            for (String s : messages) {
+                drop.put(s);
+            }
+            drop.put("DONE");
+        } catch (InterruptedException intEx) {
+            System.out.println("Interrupted! "
+                    + "Last one out, turn out the lights!");
+        }
+    }
+}
+
+class Consumer
+        implements Runnable {
+
+    private BlockingQueue<String> drop;
+
+    public Consumer(BlockingQueue<String> d) {
+        this.drop = d;
+    }
+
+    public void run() {
+        try {
+            String msg = null;
+
+            while (!((msg = drop.take()).equals("DONE"))) {
+                System.out.println(msg);
+            }
+        } catch (InterruptedException intEx) {
+            System.out.println("Interrupted! "
+                    + "Last one out, turn out the lights!");
+        }
+    }
+}

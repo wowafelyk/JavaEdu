@@ -41,9 +41,12 @@ public class JavaEdu {
                 System.out.println("Case SYNCH");
                 break;
             case "blockingQueue":
+                if (false)
                 javaedu.threads.blockingQueue.BlockingQueueTest.main();
+                else if(true)
+                javaedu.threads.blockingQueue.BlockingQueueTest2.main(); 
                 break;
-        }
+                }
     }
 
 }
