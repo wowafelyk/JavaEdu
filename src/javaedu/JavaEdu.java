@@ -22,7 +22,7 @@ public class JavaEdu {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
 
-        String s = "blockingQueue";
+        String s = "futures";
         switch (s) {
             case "bounce":
                 Logger.getLogger(BankTest.class.getName()).log(Level.INFO, "Haha it's working");
@@ -41,12 +41,18 @@ public class JavaEdu {
                 System.out.println("Case SYNCH");
                 break;
             case "blockingQueue":
+                System.out.println("Case blockingQueue");
                 if (false)
                 javaedu.threads.blockingQueue.BlockingQueueTest.main();
                 else if(true)
                 javaedu.threads.blockingQueue.BlockingQueueTest2.main(); 
                 break;
+            case "futures":
+                System.out.println("sunch.collables_and_futures");
+                javaedu.threads.synch.ñallables_and_futures.FutureTest.main();
+                break;
                 }
+        
     }
 
 }
