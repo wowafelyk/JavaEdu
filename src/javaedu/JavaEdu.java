@@ -42,17 +42,28 @@ public class JavaEdu {
                 break;
             case "blockingQueue":
                 System.out.println("Case blockingQueue");
-                if (false)
-                javaedu.threads.blockingQueue.BlockingQueueTest.main();
-                else if(true)
-                javaedu.threads.blockingQueue.BlockingQueueTest2.main(); 
+                if (false) {
+                    javaedu.threads.blockingQueue.BlockingQueueTest.main();
+                } else if (true) {
+                    javaedu.threads.blockingQueue.BlockingQueueTest2.main();
+                }
                 break;
             case "futures":
                 System.out.println("sunch.collables_and_futures");
-                javaedu.threads.synch.Òallables_and_futures.FutureTest.main();
-                break;
+                if (false) {
+                    
+                    javaedu.threads.synch.Òallables_and_futures.FutureTest.main();
+                } else if (true) {
+                    try {
+                        javaedu.threads.synch.Òallables_and_futures.ThreadPoolTest.main();
+                    } catch (Exception ex) {
+                        System.out.println("ÿ‡ÈÚ‡Ì Error");
+                        Logger.getLogger(JavaEdu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-        
+                break;
+        }
+
     }
 
 }
