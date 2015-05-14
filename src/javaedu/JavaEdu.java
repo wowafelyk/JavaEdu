@@ -22,7 +22,7 @@ public class JavaEdu {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
 
-        String s = "futures";
+        String s = "methods"; //selecting pacage with examples
         switch (s) {
             case "bounce":
                 Logger.getLogger(BankTest.class.getName()).log(Level.INFO, "Haha it's working");
@@ -50,8 +50,8 @@ public class JavaEdu {
                 break;
             case "futures":
                 System.out.println("sunch.collables_and_futures");
-                if (false) {
-                    
+                //simple metod with "if-else-if" for selecting example
+                if (false){
                     javaedu.threads.synch.ñallables_and_futures.FutureTest.main();
                 } else if (true) {
                     try {
@@ -62,6 +62,9 @@ public class JavaEdu {
                     }
                 }
                 break;
+            case "methods":
+                System.out.println("threads.methods");
+                javaedu.threads.methods.ForkJoinTest.main();
         }
 
     }
