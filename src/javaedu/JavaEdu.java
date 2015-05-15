@@ -22,8 +22,9 @@ public class JavaEdu {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
 
-        String s = "methods"; //selecting pacage with examples
-        switch (s) {
+        //String s = "synch"; 
+        switch ("synch") {//selecting pacage with examples
+
             case "bounce":
                 Logger.getLogger(BankTest.class.getName()).log(Level.INFO, "Haha it's working");
                 /**
@@ -36,10 +37,23 @@ public class JavaEdu {
 
                 Bounce.main();
                 break;
-            case "synch":
-                TextField.main();
-                System.out.println("Case SYNCH");
-                break;
+
+            case "synch": 
+                System.out.println("sunch");
+                if (false) {
+                    TextField.main();
+                    System.out.println("Case SYNCH");
+                    break;
+                } else if (true) {
+                    try {
+                        javaedu.threads.synch.FillListTask.main();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(JavaEdu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    break;
+                }
+
             case "blockingQueue":
                 System.out.println("Case blockingQueue");
                 if (false) {
@@ -48,10 +62,11 @@ public class JavaEdu {
                     javaedu.threads.blockingQueue.BlockingQueueTest2.main();
                 }
                 break;
+
             case "futures":
                 System.out.println("sunch.collables_and_futures");
                 //simple metod with "if-else-if" for selecting example
-                if (false){
+                if (false) {
                     javaedu.threads.synch.ñallables_and_futures.FutureTest.main();
                 } else if (true) {
                     try {
@@ -62,9 +77,11 @@ public class JavaEdu {
                     }
                 }
                 break;
+
             case "methods":
                 System.out.println("threads.methods");
                 javaedu.threads.methods.ForkJoinTest.main();
+                break;
         }
 
     }
